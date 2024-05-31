@@ -25,7 +25,7 @@ pipeline {
             steps {
                 sh 'cp Dockerfile /tmp/jt-app-01'
                 sh "ssh amer@192.168.100.69 'echo ctcvmware | sudo -S docker build -t my-nginx /tmp/jt-app-01'"
-                sh "ssh amer@192.168.100.69 'echo ctcvmware | sudo -S docker run -d -p 8888:80 my-nginx:latest'"
+                sh "ssh amer@192.168.100.69 'echo ctcvmware | sudo -S docker run -d -p 8888:8888 my-nginx:latest'"
                 echo "container deployed! ..."
             }
         }
