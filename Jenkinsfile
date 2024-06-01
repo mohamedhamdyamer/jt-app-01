@@ -28,7 +28,7 @@ pipeline {
                                 fileContentReplaceItemConfig(
                                     search: 'Environment built for',
                                     replace: 'Environment built for: Jenkins Testing ...',
-                                    verbose: false,
+                                    verbose: true,
                                 )
                             ],
                             fileEncoding: 'ASCII',
