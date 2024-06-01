@@ -6,4 +6,4 @@ COPY index.html /usr/share/nginx/html
 
 USER nginx
 
-HEALTHCHECK CMD curl --fail http://localhost || exit 1
+HEALTHCHECK CMD curl --fail http://localhost:8888 || exit 1
