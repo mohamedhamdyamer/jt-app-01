@@ -32,6 +32,7 @@ pipeline {
                                 )
                             ],
                             fileEncoding: 'UTF-8',
+                            lineSeparator: 'Unix',
                             filePath: 'index.html'
                         )
                     ]
