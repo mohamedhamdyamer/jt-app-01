@@ -6,8 +6,14 @@ pipeline {
     stages {
         stage('copy-to-tmp-location') {
             steps {
-                fileOperations([fileCopyOperation(includes: 'index.html',
-                                                  targetLocation: '/tmp/jt-app-01')])
+                fileOperations(
+                    [
+                        fileCopyOperation(
+                            includes: 'index.html',
+                            targetLocation: '/tmp/jt-app-01'
+                        )
+                    ]
+                )
             }
         }
         stage('append-details') {
@@ -15,7 +21,20 @@ pipeline {
                 label 'agent-02'
             }
             steps {
-                sh "sed -i 's/Environment built for:/Environment built for: Jenkins Testing .../g' /tmp/jt-app-01/index.html"
+                contentReplace(
+                    configs: [
+                        fileContentReplaceConfig(
+                            configs: [
+                                fileContentReplaceItemConfig(
+                                    search: 'Environment built for',
+                                    replace: 'Environment built for: Jenkins Testing ...',
+                                    verbose: false
+                                )
+                            ]
+                            filePath: 'index.html'
+                        )
+                    ]
+                )
                 sh "sed -i 's/Build Number:/Build Number: $BUILD_NUMBER/g' /tmp/jt-app-01/index.html"
             }
         }
