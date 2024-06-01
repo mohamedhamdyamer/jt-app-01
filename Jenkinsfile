@@ -31,7 +31,7 @@ pipeline {
                                     verbose: false,
                                 )
                             ],
-                            fileEncoding: '',
+                            fileEncoding: 'ASCII',
                             lineSeparator: 'Unix',
                             filePath: 'index.html'
                         )
