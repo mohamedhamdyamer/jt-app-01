@@ -6,7 +6,8 @@ pipeline {
     stages {
         stage('copy-to-tmp-location') {
             steps {
-                sh 'cp index.html /tmp/jt-app-01/index.html'
+                fileOperations([fileCopyOperation(includes: 'index.html',
+                                                  targetLocation: '/tmp/jt-app-01')])
             }
         }
         stage('append-details') {
