@@ -33,7 +33,7 @@ pipeline {
                             ],
                             fileEncoding: 'ASCII',
                             lineSeparator: 'Unix',
-                            filePath: 'index.html'
+                            filePath: '/tmp/jt-app-01/index.html'
                         )
                     ]
                 )
