@@ -1,9 +1,9 @@
 FROM nginx:stable
 
-COPY default.conf /etc/nginx/conf.d
-COPY nginx.conf /etc/nginx
+#COPY default.conf /etc/nginx/conf.d
+#COPY nginx.conf /etc/nginx
 COPY index.html /usr/share/nginx/html
 
-USER nginx
+#USER nginx
 
-HEALTHCHECK CMD curl --fail http://localhost:8888 || exit 1
+HEALTHCHECK CMD curl --fail http://localhost:80 || exit 1
