@@ -23,7 +23,7 @@ pipeline {
                 label 'agent-03'
             }
             steps {
-                sh 'cp default.conf nginx.conf Dockerfile /tmp/jt-app-01'
+                sh 'cp Dockerfile /tmp/jt-app-01'
                 sh "ssh amer@192.168.100.69 'echo ctcvmware | sudo -S docker build -t my-nginx /tmp/jt-app-01'"
                 sh "ssh amer@192.168.100.69 'echo ctcvmware | sudo -S docker stop my-nginx-container'"
                 sh "ssh amer@192.168.100.69 'echo ctcvmware | sudo -S docker run --name my-nginx-container --rm -d -p 8888:80 my-nginx:latest'"
