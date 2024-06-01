@@ -30,7 +30,7 @@ pipeline {
                                     replace: 'Environment built for: Jenkins Testing ...',
                                     verbose: false
                                 )
-                            ]
+                            ],
                             filePath: 'index.html'
                         )
                     ]
