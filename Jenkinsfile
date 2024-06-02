@@ -37,7 +37,7 @@ pipeline {
                                 ),
                                 fileContentReplaceItemConfig(
                                     search: '(Version=)([0-9]+\\.[0-9]+\\.[0-9]+)',
-                                    replace: '$1.3.${BUILD_NUMBER}',
+                                    replace: '$13.3.${BUILD_NUMBER}',
                                     verbose: true
                                 )
                             ],
