@@ -36,7 +36,7 @@ pipeline {
                                     verbose: true
                                 ),
                                 fileContentReplaceItemConfig(
-                                    search: '(Full Version: )([0-9].[0-9].4)',
+                                    search: '(Full Version: )([0-9].2.[0-9]])',
                                     replace: '$1 - $2',
                                     verbose: true
                                 )
