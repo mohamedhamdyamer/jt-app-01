@@ -34,6 +34,11 @@ pipeline {
                                     search: 'Build Number:',
                                     replace: 'Build Number: $BUILD_NUMBER',
                                     verbose: true
+                                ),
+                                fileContentReplaceItemConfig(
+                                    search: '[0-9]+\.+[0-9]+\.+[0-9]',
+                                    replace: 'Build Number: $3.3.BUILD_NUMBER',
+                                    verbose: true
                                 )
                             ],
                             fileEncoding: 'ASCII',
