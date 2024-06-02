@@ -36,8 +36,8 @@ pipeline {
                                     verbose: true
                                 ),
                                 fileContentReplaceItemConfig(
-                                    search: '(Full Version: )([0-9]+\\.[0-9]+\\.[0-9]+)',
-                                    replace: '$1 - $2 - $BUILD_ID',
+                                    search: '(Full Version: )([0-9]+.[0-9]+.[0-9])',
+                                    replace: '$1 - $2',
                                     verbose: true
                                 )
                             ],
