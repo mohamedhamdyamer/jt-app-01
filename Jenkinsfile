@@ -37,7 +37,7 @@ pipeline {
                                 ),
                                 fileContentReplaceItemConfig(
                                     search: '(Full Version: )([0-9]+\\.[0-9]+\\.[0-9]+)',
-                                    replace: '$1 - $2 -  _ $4',
+                                    replace: '$1 - $2',
                                     verbose: true
                                 )
                             ],
