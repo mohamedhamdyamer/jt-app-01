@@ -28,23 +28,12 @@ pipeline {
                                 fileContentReplaceItemConfig(
                                     search: 'Environment built for:',
                                     replace: 'Environment built for: Jenkins Testing ...',
-                                    verbose: true,
-                                )
-                            ],
-                            fileEncoding: 'ASCII',
-                            lineSeparator: 'Unix',
-                            filePath: '/tmp/jt-app-01/index.html'
-                        )
-                    ]
-                )
-                contentReplace(
-                    configs: [
-                        fileContentReplaceConfig(
-                            configs: [
+                                    verbose: true
+                                ),
                                 fileContentReplaceItemConfig(
                                     search: 'Build Number:',
                                     replace: 'Build Number: $BUILD_NUMBER',
-                                    verbose: true,
+                                    verbose: true
                                 )
                             ],
                             fileEncoding: 'ASCII',
