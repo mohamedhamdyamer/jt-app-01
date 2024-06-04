@@ -40,7 +40,7 @@ pipeline {
             }
             steps {
                 sshPublisher(
-                    publishers[
+                    publishers: [
                         configName: deployEnv,
                         transfers[
                             sourceFiles: 'index.html',
