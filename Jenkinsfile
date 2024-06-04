@@ -42,7 +42,7 @@ pipeline {
                 sshPublisher(
                     publishers: [
                         sshPublisherDesc(
-                            
+                            configName: 'jenkins',
                             transfers: [
                                 sshTransfer(
                                     sourceFiles: 'index.html',
