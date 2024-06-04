@@ -39,12 +39,13 @@ pipeline {
                 label 'agent-02'
             }
             steps {
-                fileOperations(
-                    [
-                        fileCopyOperation(
-                            includes: 'index.html, Dockerfile, stop-container-if-exists.sh',
-                            targetLocation: '/home/amer/tmp/jt-app-01'
-                        )
+                sshPublisher(
+                    publishers[
+                        configName: deployEnv,
+                        transfers[
+                            sourceFiles: 'index.html',
+                            remoteDirectory: '/home/amer/tmp/jt-app-01'
+                        ]
                     ]
                 )
             }
