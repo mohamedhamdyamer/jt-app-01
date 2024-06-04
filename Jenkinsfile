@@ -45,7 +45,7 @@ pipeline {
                             configName: 'amer@192.168.8.187',
                             transfers: [
                                 sshTransfer(
-                                    sourceFiles: 'index.html',
+                                    sourceFiles: 'index.html, Dockerfile, stop-container-if-exists.sh',
                                 )
                             ]
                         )
