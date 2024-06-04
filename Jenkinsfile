@@ -36,7 +36,7 @@ pipeline {
         }
         stage('copy-to-tmp-location') {
             agent {
-                label 'built-in'
+                label 'agent-02'
             }
             steps {
                 sshPublisher(
