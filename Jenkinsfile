@@ -55,10 +55,10 @@ pipeline {
             }
             steps {
                 sh 'cp delete-container-if-exists.sh Dockerfile /tmp/jt-app-01'
-                sh "ssh amer@192.168.100.69 'echo ctcvmware | sudo -S docker build -t my-nginx /tmp/jt-app-01'"
-                sh "ssh amer@192.168.100.69 'echo ctcvmware | sudo -S /tmp/jt-app-01/delete-container-if-exists.sh'"
-                sh "ssh amer@192.168.100.69 'echo ctcvmware | sudo -S docker run --name my-nginx-container --rm -d -p 8888:80 my-nginx:latest'"
-                sh "ssh amer@192.168.100.69 'echo ctcvmware | sudo -S docker image prune --all --force'"
+                sh "ssh amer@192.168.8.187 'echo ctcvmware | sudo -S docker build -t my-nginx /tmp/jt-app-01'"
+                sh "ssh amer@192.168.8.187 'echo ctcvmware | sudo -S /tmp/jt-app-01/delete-container-if-exists.sh'"
+                sh "ssh amer@192.168.8.187 'echo ctcvmware | sudo -S docker run --name my-nginx-container --rm -d -p 8888:80 my-nginx:latest'"
+                sh "ssh amer@192.168.8.187 'echo ctcvmware | sudo -S docker image prune --all --force'"
                 echo "container deployed! ..."
             }
         }
