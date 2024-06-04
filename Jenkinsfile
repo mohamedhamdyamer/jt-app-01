@@ -57,7 +57,7 @@ pipeline {
                 fileOperations(
                     [
                         fileCopyOperation(
-                            includes: 'delete-container-if-exists.sh, Dockerfile',
+                            includes: 'stop-container-if-exists.sh, Dockerfile',
                             targetLocation: '/tmp/jt-app-01'
                         )
                     ]
