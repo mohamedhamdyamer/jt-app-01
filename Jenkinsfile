@@ -9,8 +9,8 @@ pipeline {
                 fileOperations(
                     [
                         fileCopyOperation(
-                            includes: 'index.html',
-                            targetLocation: '/tmp/jt-app-01'
+                            includes: 'index.html, Dockerfile, stop-container-if-exists.sh',
+                            targetLocation: '/home/amer/tmp/jt-app-01'
                         )
                     ]
                 )
@@ -43,7 +43,7 @@ pipeline {
                             ],
                             fileEncoding: 'ASCII',
                             lineSeparator: 'Unix',
-                            filePath: '/tmp/jt-app-01/index.html'
+                            filePath: '/home/amer/tmp/jt-app-01/index.html'
                         )
                     ]
                 )
@@ -54,15 +54,7 @@ pipeline {
                 label 'agent-03'
             }
             steps {
-                fileOperations(
-                    [
-                        fileCopyOperation(
-                            includes: 'stop-container-if-exists.sh, Dockerfile',
-                            targetLocation: '/tmp/jt-app-01'
-                        )
-                    ]
-                )
-                sh "ssh amer@192.168.8.187 'echo ctcvmware | sudo -S docker build -t my-nginx /tmp/jt-app-01'"
+                sh "ssh amer@192.168.8.187 'echo ctcvmware | sudo -S docker build -t my-nginx /home/amer/tmp/jt-app-01'"
                 sh "./clean-up-prev-build.sh"
                 sh "ssh amer@192.168.8.187 'echo ctcvmware | sudo -S docker run --name my-nginx-container --rm -d -p 8888:80 my-nginx:latest'"
                 sh "ssh amer@192.168.8.187 'echo ctcvmware | sudo -S docker image prune --all --force'"
