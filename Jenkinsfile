@@ -4,22 +4,7 @@ pipeline {
     }
 
     stages {
-        stage('copy-to-tmp-location') {
-            steps {
-                fileOperations(
-                    [
-                        fileCopyOperation(
-                            includes: 'index.html, Dockerfile, stop-container-if-exists.sh',
-                            targetLocation: '/home/amer/tmp/jt-app-01'
-                        )
-                    ]
-                )
-            }
-        }
         stage('append-details') {
-            agent {
-                label 'agent-02'
-            }
             steps {
                 contentReplace(
                     configs: [
@@ -43,7 +28,22 @@ pipeline {
                             ],
                             fileEncoding: 'ASCII',
                             lineSeparator: 'Unix',
-                            filePath: '/home/amer/tmp/jt-app-01/index.html'
+                            filePath: 'index.html'
+                        )
+                    ]
+                )
+            }
+        }
+        stage('copy-to-tmp-location') {
+            agent {
+                label 'agent-02'
+            }
+            steps {
+                fileOperations(
+                    [
+                        fileCopyOperation(
+                            includes: 'index.html, Dockerfile, stop-container-if-exists.sh',
+                            targetLocation: '/home/amer/tmp/jt-app-01'
                         )
                     ]
                 )
