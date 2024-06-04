@@ -42,7 +42,7 @@ pipeline {
                 sshPublisher(
                     publishers: [
                         sshPublisherDesc(
-                            configName: 'deployEnv',
+                            configName: 'amer',
                             transfers: [
                                 sshTransfer(
                                     sourceFiles: 'index.html',
