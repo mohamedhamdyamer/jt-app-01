@@ -42,11 +42,10 @@ pipeline {
                 sshPublisher(
                     publishers: [
                         sshPublisherDesc(
-                            configName: 'jenkins',
+                            configName: 'amer@192.168.8.187',
                             transfers: [
                                 sshTransfer(
                                     sourceFiles: 'index.html',
-                                    remoteDirectory: '/home/amer/tmp/jt-app-01'
                                 )
                             ]
                         )
