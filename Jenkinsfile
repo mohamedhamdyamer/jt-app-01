@@ -41,11 +41,13 @@ pipeline {
             steps {
                 sshPublisher(
                     publishers: [
-                        configName: deployEnv,
-                        transfers[
-                            sourceFiles: 'index.html',
-                            remoteDirectory: '/home/amer/tmp/jt-app-01'
-                        ]
+                        sshPublisherDesc(
+                            configName: 'deployEnv',
+                            transfers[
+                                sourceFiles: 'index.html',
+                                remoteDirectory: '/home/amer/tmp/jt-app-01'
+                            ]
+                        )
                     ]
                 )
             }
