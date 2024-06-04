@@ -46,7 +46,6 @@ pipeline {
                             transfers[
                                 sshTransfer(
                                     sourceFiles: 'index.html',
-                                    remoteDirectory: '/home/amer/tmp/jt-app-01'
                                 )
                             ]
                         )
