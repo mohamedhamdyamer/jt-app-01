@@ -46,6 +46,7 @@ pipeline {
                             transfers: [
                                 sshTransfer(
                                     sourceFiles: 'index.html, Dockerfile, stop-container-if-exists.sh',
+                                    keepFilePermissions: true
                                 )
                             ]
                         )
