@@ -62,8 +62,8 @@ pipeline {
                         )
                     ]
                 )
-                sh "ssh amer@192.168.8.187 'echo ctcvmware | sudo -S docker build -t my-nginx /tmp/jt-app-01'"
-                sh "./clean-up-from-prev-build.sh"
+                sh "echo ctcvmware | sudo -S docker build -t my-nginx /tmp/jt-app-01"
+                sh "./clean-up-prev-build.sh"
                 sh "ssh amer@192.168.8.187 'echo ctcvmware | sudo -S docker run --name my-nginx-container --rm -d -p 8888:80 my-nginx:latest'"
                 sh "ssh amer@192.168.8.187 'echo ctcvmware | sudo -S docker image prune --all --force'"
                 echo "container deployed! ..."
