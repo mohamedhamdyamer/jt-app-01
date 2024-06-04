@@ -43,9 +43,10 @@ pipeline {
                     publishers: [
                         sshPublisherDesc(
                             configName: 'deployEnv',
-                            transfers[
+                            transfers: [
                                 sshTransfer(
                                     sourceFiles: 'index.html',
+                                    remoteDirectory: '/home/amer/tmp/jt-app-01'
                                 )
                             ]
                         )
