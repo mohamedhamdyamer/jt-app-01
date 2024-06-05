@@ -1,4 +1,4 @@
-def remote=[:]
+def my_remote=[:]
 my_remote.name = 'docker-host'
 my_remote.host = '192.168.8.189'
 my_remote.allowAnyHosts = true
