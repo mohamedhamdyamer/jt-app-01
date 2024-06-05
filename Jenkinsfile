@@ -8,7 +8,7 @@ pipeline {
         label 'agent-01'
     }
     environment {
-        my-creds = credentials('amer-at-docker-host')
+        my-creds=credentials('amer-at-docker-host')
     }
 
     stages {
