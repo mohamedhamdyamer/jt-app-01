@@ -49,7 +49,7 @@ pipeline {
         }
         stage('copy-to-tmp-location') {
             agent {
-                label 'agent-01'
+                label 'agent-03'
             }
             steps {
                 script {
