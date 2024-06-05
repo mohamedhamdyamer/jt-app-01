@@ -5,6 +5,9 @@ pipeline {
 
     stages {
         stage('append-details') {
+            agent {
+                label 'built-in'
+            }
             steps {
                 contentReplace(
                     configs: [
