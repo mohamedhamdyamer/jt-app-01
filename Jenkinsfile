@@ -68,6 +68,10 @@ pipeline {
                 label 'agent-03'
             }
             steps {
+                script {
+                    my_remote.user=env.my_creds_USR
+                    my_remote.password='ctcvmware'
+                }
                 sshCommand(remote: my_remote, sudo: true, command: "docker build -t my-nginx /home/amer/tmp/jt-app-01")
                 sh "./clean-up-prev-build.sh"
                 sshCommand(remote: my_remote, sudo: true, command: "docker run --name my-nginx-container --rm -d -p 8888:80 my-nginx:latest")
