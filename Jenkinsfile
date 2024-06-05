@@ -67,10 +67,10 @@ pipeline {
                 label 'agent-03'
             }
             steps {
-                sh "ssh amer@192.168.8.189 'echo ctcvmware | sudo -S docker build -t my-nginx /home/amer/tmp/jt-app-01'"
+                sshCommand(remote: my_remote, command: "echo ctcvmware | sudo -S docker build -t my-nginx /home/amer/tmp/jt-app-01")
                 sh "./clean-up-prev-build.sh"
-                sh "ssh amer@192.168.8.189 'echo ctcvmware | sudo -S docker run --name my-nginx-container --rm -d -p 8888:80 my-nginx:latest'"
-                sh "ssh amer@192.168.8.189 'echo ctcvmware | sudo -S docker image prune --all --force'"
+                sshCommand(remote: my_remote, command: "echo ctcvmware | sudo -S docker run --name my-nginx-container --rm -d -p 8888:80 my-nginx:latest")
+                sshCommand(remote: my_remote, command: "echo ctcvmware | sudo -S docker image prune --all --force")
                 echo "container deployed! ..."
             }
         }
