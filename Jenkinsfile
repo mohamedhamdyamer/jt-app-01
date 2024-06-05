@@ -32,20 +32,33 @@ pipeline {
                         )
                     ]
                 )
+                sshPublisher(
+                    publishers: [
+                        sshPublisherDesc(
+                            configName: 'amer@docker-host',
+                            transfers: [
+                                sshTransfer(
+                                    sourceFiles: 'index.html',
+                                    keepFilePermissions: true
+                                )
+                            ]
+                        )
+                    ]
+                )
             }
         }
         stage('copy-to-tmp-location') {
             agent {
-                label 'agent-03'
+                label 'built-in'
             }
             steps {
                 sshPublisher(
                     publishers: [
                         sshPublisherDesc(
-                            configName: 'amer@192.168.8.187',
+                            configName: 'amer@docker-host',
                             transfers: [
                                 sshTransfer(
-                                    sourceFiles: 'index.html, Dockerfile, stop-container-if-exists.sh',
+                                    sourceFiles: 'Dockerfile, stop-container-if-exists.sh',
                                     keepFilePermissions: true
                                 )
                             ]
