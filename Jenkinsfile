@@ -1,6 +1,14 @@
+def my-remote=[:]
+my-remote.name = 'docker-host'
+my-remote.host = '192.168.8.189'
+my-remote.allowAnyHosts = true
+
 pipeline {
     agent {
         label 'agent-01'
+    }
+    environment {
+        my-creds = credentials('amer-at-docker-host')
     }
 
     stages {
@@ -32,19 +40,11 @@ pipeline {
                         )
                     ]
                 )
-                sshPublisher(
-                    publishers: [
-                        sshPublisherDesc(
-                            configName: 'amer@docker-host',
-                            transfers: [
-                                sshTransfer(
-                                    sourceFiles: 'index.html',
-                                    keepFilePermissions: true
-                                )
-                            ]
-                        )
-                    ]
-                )
+                script {
+                    my-remote.user=env.my-creds_USR
+                    my-remote.password=env.my-creds_PSW
+                }
+                sshCommand(remote: my-remote, command: "ls -ltr")
             }
         }
         stage('copy-to-tmp-location') {
