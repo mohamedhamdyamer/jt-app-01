@@ -43,7 +43,7 @@ pipeline {
                 )
                 script {
                     my_remote.user=env.my_creds_USR
-                    my_remote.password=env.my_creds_PSW
+                    my_remote.identityFile=env.my_creds_PSW
                 }
                 sshPut(remote: my_remote, from: 'index.html', into: '/home/amer/tmp/jt-app-01')
             }
@@ -55,7 +55,7 @@ pipeline {
             steps {
                 script {
                     my_remote.user=env.my_creds_USR
-                    my_remote.password=env.my_creds_PSW
+                    my_remote.identityFile=env.my_creds_PSW
                 }
                 sshPut(remote: my_remote, from: 'Dockerfile', into: '/home/amer/tmp/jt-app-01')
                 sshPut(remote: my_remote, from: 'stop-container-if-exists.sh', into: '/home/amer/tmp/jt-app-01')
