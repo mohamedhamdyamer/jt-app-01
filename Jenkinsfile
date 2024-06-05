@@ -1,7 +1,7 @@
-def my-remote=[:]
-my-remote.name = 'docker-host'
-my-remote.host = '192.168.8.189'
-my-remote.allowAnyHosts = true
+def remote=[:]
+remote.name = 'docker-host'
+remote.host = '192.168.8.189'
+remote.allowAnyHosts = true
 
 pipeline {
     agent {
