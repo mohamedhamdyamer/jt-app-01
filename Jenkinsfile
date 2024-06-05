@@ -1,7 +1,7 @@
 def remote=[:]
-remote.name = 'docker-host'
-remote.host = '192.168.8.189'
-remote.allowAnyHosts = true
+my_remote.name = 'docker-host'
+my_remote.host = '192.168.8.189'
+my_remote.allowAnyHosts = true
 
 pipeline {
     agent {
@@ -41,8 +41,8 @@ pipeline {
                     ]
                 )
                 script {
-                    my-remote.user=env.my_creds_USR
-                    my-remote.password=env.my_creds_PSW
+                    my_remote.user=env.my_creds_USR
+                    my_remote.password=env.my_creds_PSW
                 }
                 sshCommand(remote: my-remote, command: "ls -ltr")
             }
