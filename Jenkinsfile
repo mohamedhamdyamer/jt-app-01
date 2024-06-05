@@ -6,7 +6,7 @@ my_remote.knownHosts = '/var/jenkins_home/.ssh/known_hosts'
 
 pipeline {
     agent {
-        label 'agent-03'
+        label 'agent-01'
     }
     environment {
         my_creds = credentials('amer-at-docker-host')
@@ -50,7 +50,7 @@ pipeline {
         }
         stage('copy-to-tmp-location') {
             agent {
-                label 'agent-03'
+                label 'agent-02'
             }
             steps {
                 script {
