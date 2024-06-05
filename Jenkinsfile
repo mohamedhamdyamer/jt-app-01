@@ -11,6 +11,7 @@ pipeline {
     }
     environment {
         my_creds = credentials('amer-at-docker-host')
+        my_credsp = credentials('amer-at-docker-host-password')
     }
 
     stages {
@@ -69,8 +70,8 @@ pipeline {
             }
             steps {
                 script {
-                    my_remote.user=env.my_creds_USR
-                    my_remote.password='ctcvmware'
+                    my_remote.user=env.my_credsp_USR
+                    my_remote.password=my_credsp_PSW
                 }
                 sshCommand(remote: my_remote, sudo: true, command: "docker build -t my-nginx /home/amer/tmp/jt-app-01")
                 sh "./clean-up-prev-build.sh"
