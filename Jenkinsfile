@@ -44,27 +44,19 @@ pipeline {
                     my_remote.user=env.my_creds_USR
                     my_remote.password=env.my_creds_PSW
                 }
-                sshCommand(remote: my_remote, command: "ls -ltr")
+                sshPut(remote: my_remote, from: 'index.html', into: '/home/amer/tmp/jt-app-01')
             }
         }
         stage('copy-to-tmp-location') {
             agent {
-                label 'built-in'
+                label 'agent-02'
             }
             steps {
-                sshPublisher(
-                    publishers: [
-                        sshPublisherDesc(
-                            configName: 'amer@docker-host',
-                            transfers: [
-                                sshTransfer(
-                                    sourceFiles: 'Dockerfile, stop-container-if-exists.sh',
-                                    keepFilePermissions: true
-                                )
-                            ]
-                        )
-                    ]
-                )
+                script {
+                    my_remote.user=env.my_creds_USR
+                    my_remote.password=env.my_creds_PSW
+                }
+                sshPut(remote: my_remote, from: 'Dockerfile, stop-container-if-exists.sh', into: '/home/amer/tmp/jt-app-01')
             }
         }
         stage('deploy-container') {
