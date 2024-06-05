@@ -8,7 +8,7 @@ pipeline {
         label 'agent-01'
     }
     environment {
-        my-creds=credentials('amer-at-docker-host')
+        my_creds = credentials('amer-at-docker-host')
     }
 
     stages {
@@ -41,8 +41,8 @@ pipeline {
                     ]
                 )
                 script {
-                    my-remote.user=env.my-creds_USR
-                    my-remote.password=env.my-creds_PSW
+                    my-remote.user=env.my_creds_USR
+                    my-remote.password=env.my_creds_PSW
                 }
                 sshCommand(remote: my-remote, command: "ls -ltr")
             }
