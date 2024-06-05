@@ -58,6 +58,7 @@ pipeline {
                 }
                 sshPut(remote: my_remote, from: 'Dockerfile', into: '/home/amer/tmp/jt-app-01')
                 sshPut(remote: my_remote, from: 'stop-container-if-exists.sh', into: '/home/amer/tmp/jt-app-01')
+                sshCommand(remote: my_remote, command: "chmod +x /home/amer/tmp/jt-app-01/stop-container-if-exists.sh")
             }
         }
         stage('deploy-container') {
