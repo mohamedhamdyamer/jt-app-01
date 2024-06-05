@@ -1,6 +1,7 @@
 def my_remote=[:]
 my_remote.name = 'docker-host'
 my_remote.host = '192.168.8.189'
+my_remote.knownHosts = '/var/jenkins_home/.ssh/known_hosts'
 
 pipeline {
     agent {
@@ -42,7 +43,6 @@ pipeline {
                 script {
                     my_remote.user=env.my_creds_USR
                     my_remote.password=env.my_creds_PSW
-                    my_remote.knownHosts = '/var/jenkins_home/.ssh/known_hosts'
                 }
                 sshPut(remote: my_remote, from: 'index.html', into: '/home/amer/tmp/jt-app-01')
             }
@@ -55,7 +55,6 @@ pipeline {
                 script {
                     my_remote.user=env.my_creds_USR
                     my_remote.password=env.my_creds_PSW
-                    my_remote.knownHosts = '/var/jenkins_home/.ssh/known_hosts'
                 }
                 sshPut(remote: my_remote, from: 'Dockerfile', into: '/home/amer/tmp/jt-app-01')
                 sshPut(remote: my_remote, from: 'stop-container-if-exists.sh', into: '/home/amer/tmp/jt-app-01')
