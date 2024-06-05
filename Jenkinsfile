@@ -44,7 +44,7 @@ pipeline {
                     my_remote.user=env.my_creds_USR
                     my_remote.password=env.my_creds_PSW
                 }
-                sshCommand(remote: my-remote, command: "ls -ltr")
+                sshCommand(remote: my_remote, command: "ls -ltr")
             }
         }
         stage('copy-to-tmp-location') {
